@@ -1,0 +1,31 @@
+name: Missing listing, firm, fund or stake
+description: Propose a listing, firm, fund vehicle or holding that the dataset does not include.
+title: "[Missing] "
+labels: ["missing entity"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is missing?
+      options: [A stake held by a venture firm in a listing, A fund vehicle in a firm's fund history, A listing in the universe, A firm or holder]
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Firm, fund, company, ticker, dates, share counts or fund size, as applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Public sources for every figure (EDGAR filing links preferred).
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Why it is in scope
+      description: The universe covers US venture-backed listings from January 2014 to June 2026, excluding life sciences; only primary capital in funds counts.
