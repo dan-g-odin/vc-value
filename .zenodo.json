@@ -1,0 +1,40 @@
+{
+  "title": "Venture value created per dollar at risk: US venture-backed listings, 2014-2026",
+  "upload_type": "dataset",
+  "description": "<p>Stakes held by venture firms and other institutional investors in 424 US venture-backed listings (January 2014 to June 2026, excluding life sciences), the share of each stake bought from the company, the funds that held them, the fund histories of 180 venture firms, and rankings of firms and fund generations by value created per dollar of capital at risk, with ranges, robustness checks and an annualised comparison with the Nasdaq-100 (QQQ). All values are measured at a fixed performance end date, the close on 2 October 2026.</p><p>Documentation, data dictionary and methodology: https://github.com/dan-g-odin/vc-value</p>",
+  "creators": [
+    {
+      "name": "Gray, Dan",
+      "affiliation": "Odin"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Gray, Dan",
+      "affiliation": "Odin",
+      "type": "ContactPerson"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "keywords": [
+    "venture capital",
+    "private equity",
+    "IPO",
+    "value creation",
+    "fund performance",
+    "public market equivalent",
+    "direct alpha",
+    "open data"
+  ],
+  "version": "1.0.0",
+  "publication_date": "2026-10-18",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/dan-g-odin/vc-value",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
+    }
+  ],
+  "notes": "Performance end date: the close on 2 October 2026. Holdings of natural persons are not included."
+}
