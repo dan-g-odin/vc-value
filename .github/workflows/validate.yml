@@ -1,0 +1,32 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Schema, key and recomputation checks
+        run: python scripts/validate.py
+      - name: Frictionless Data Package validation
+        run: frictionless validate datapackage.json
+      - name: Data dictionary is up to date
+        run: python scripts/make_data_dictionary.py --check
+      - name: SQLite database builds with intact foreign keys
+        run: python scripts/build_sqlite.py --output "$RUNNER_TEMP/check.sqlite"
+      - name: Headline figures reproduce from the core tables
+        run: python examples/recompute_headline.py
