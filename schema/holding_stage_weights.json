@@ -1,0 +1,118 @@
+{
+  "fields": [
+    {
+      "name": "holding_id",
+      "type": "string",
+      "description": "Holder line.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "stage_bucket",
+      "type": "string",
+      "description": "Stage bucket of the firm's first round."
+    },
+    {
+      "name": "letter_index",
+      "type": "number",
+      "description": "Round-letter index of the first round."
+    },
+    {
+      "name": "effective_index_after_vintage",
+      "type": "number",
+      "description": "Round index after the vintage adjustment."
+    },
+    {
+      "name": "stage_weight",
+      "type": "number",
+      "description": "Stage weight applied (vintage-adjusted).",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "stage_weight_unadjusted",
+      "type": "number",
+      "description": "Stage weight before the vintage adjustment.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "stage_weight_basis",
+      "type": "string",
+      "description": "Basis of the stage weight."
+    },
+    {
+      "name": "value_stage_weighted_usd_bn",
+      "type": "number",
+      "description": "primary value x stage weight. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_flat_scale_usd_bn",
+      "type": "number",
+      "description": "Value under the unadjusted (flat) stage scale. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "entry_multiple",
+      "type": "number",
+      "description": "Multiple from the firm's entry price to the end-date value, where known."
+    },
+    {
+      "name": "company_multiple",
+      "type": "number",
+      "description": "Multiple from the first institutional round to the end-date value, where known."
+    },
+    {
+      "name": "outcome_conviction_share",
+      "type": "number",
+      "description": "Outcome-based conviction share.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "outcome_basis",
+      "type": "string",
+      "description": "Basis of outcome_conviction_share."
+    },
+    {
+      "name": "value_outcome_usd_bn",
+      "type": "number",
+      "description": "Value under the outcome-based weighting. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "primaryKey": [
+    "holding_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "holding_id"
+      ],
+      "reference": {
+        "resource": "holdings",
+        "fields": [
+          "holding_id"
+        ]
+      }
+    }
+  ]
+}

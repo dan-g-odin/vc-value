@@ -1,0 +1,133 @@
+{
+  "fields": [
+    {
+      "name": "layer",
+      "type": "string",
+      "description": "core_venture; core_plus_growth (adds growth, crossover and hedge funds); core_venture_ex_spacex.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "core_venture",
+          "core_plus_growth",
+          "core_venture_ex_spacex"
+        ]
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "rank_stage_weighted",
+      "type": "integer",
+      "description": "Rank on stage-weighted value within the layer.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "rank_primary",
+      "type": "integer",
+      "description": "Rank on primary value.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "rank_flat",
+      "type": "integer",
+      "description": "Rank on flat-scale value.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "rank_outcome",
+      "type": "integer",
+      "description": "Rank on outcome-weighted value.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "value_stage_weighted_usd_bn",
+      "type": "number",
+      "description": "Stage-weighted value. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_primary_usd_bn",
+      "type": "number",
+      "description": "Primary value. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_flat_scale_usd_bn",
+      "type": "number",
+      "description": "Flat-scale value. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_outcome_usd_bn",
+      "type": "number",
+      "description": "Outcome-weighted value. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_as_owned_usd_bn",
+      "type": "number",
+      "description": "Value of all shares held, primary or not. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "stage_ratio",
+      "type": "number",
+      "description": "value_stage_weighted / value_primary.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "companies",
+      "type": "integer",
+      "description": "Listings with primary value.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "primaryKey": [
+    "layer",
+    "firm_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    }
+  ]
+}

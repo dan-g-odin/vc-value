@@ -1,0 +1,56 @@
+{
+  "fields": [
+    {
+      "name": "strategy",
+      "type": "string",
+      "description": "Strategy.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "seed",
+          "early",
+          "multi",
+          "growth"
+        ]
+      }
+    },
+    {
+      "name": "parameter",
+      "type": "string",
+      "description": "deployment_share (key = years after vintage) or stage_mix (key = stage group).",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "deployment_share",
+          "stage_mix"
+        ]
+      }
+    },
+    {
+      "name": "key",
+      "type": "string",
+      "description": "Year offset or stage group.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Share.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  ],
+  "primaryKey": [
+    "strategy",
+    "parameter",
+    "key"
+  ],
+  "missingValues": [
+    ""
+  ]
+}

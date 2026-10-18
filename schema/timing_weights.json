@@ -1,0 +1,75 @@
+{
+  "fields": [
+    {
+      "name": "vintage",
+      "type": "integer",
+      "description": "Fund vintage, or calendar year of deployment for deployed_year_weight.",
+      "constraints": {
+        "required": true,
+        "minimum": 1960,
+        "maximum": 2026
+      }
+    },
+    {
+      "name": "strategy",
+      "type": "string",
+      "description": "Strategy.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "seed",
+          "early",
+          "multi",
+          "growth"
+        ]
+      }
+    },
+    {
+      "name": "timing_weight",
+      "type": "number",
+      "description": "Weight for a fund of this vintage and strategy, with the 25% floor for capital invested up to 2004 by funds of vintage 1995 or later.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "timing_weight_no_floor",
+      "type": "number",
+      "description": "Same weight without the floor.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "deployed_year_weight",
+      "type": "number",
+      "description": "Weight for capital deployed in calendar year = vintage (rows recorded as capital deployed per year), with the floor.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "deployed_year_weight_no_floor",
+      "type": "number",
+      "description": "Same weight without the floor.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  ],
+  "primaryKey": [
+    "vintage",
+    "strategy"
+  ],
+  "missingValues": [
+    ""
+  ]
+}

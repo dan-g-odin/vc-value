@@ -1,0 +1,55 @@
+{
+  "fields": [
+    {
+      "name": "series_id",
+      "type": "string",
+      "description": "NDX_YEAR_END: Nasdaq-100 index year-end close; QQQ_MONTHLY: QQQ month-end close (dated at the first trading day of the month); QQQ_END_DATE: QQQ close on the end date.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "NDX_YEAR_END",
+          "QQQ_MONTHLY",
+          "QQQ_END_DATE"
+        ]
+      }
+    },
+    {
+      "name": "date",
+      "type": "date",
+      "description": "Observation date (31 December for year-end closes; the month's first trading day for monthly bars).",
+      "format": "default",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "close",
+      "type": "number",
+      "description": "Closing level (index points or USD per QQQ share, unadjusted).",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "description": "Source of the series.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "note",
+      "type": "string",
+      "description": "Notes."
+    }
+  ],
+  "primaryKey": [
+    "series_id",
+    "date"
+  ],
+  "missingValues": [
+    ""
+  ]
+}

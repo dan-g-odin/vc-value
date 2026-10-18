@@ -1,0 +1,75 @@
+{
+  "fields": [
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "specification_id",
+      "type": "string",
+      "description": "Specification.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "rank",
+      "type": "integer",
+      "description": "Rank among ranked firms under the specification, by the headline figure.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "consistency_adjusted_value_per_dollar",
+      "type": "number",
+      "description": "Headline figure under the specification (x).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_per_dollar",
+      "type": "number",
+      "description": "Plain value per dollar under the specification (x), where computed.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "primaryKey": [
+    "firm_id",
+    "specification_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "specification_id"
+      ],
+      "reference": {
+        "resource": "specifications",
+        "fields": [
+          "specification_id"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "stage_group",
+      "type": "string",
+      "description": "early (seed and Series A), mid (Series B and C), late (Series D and later), pooled.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "early",
+          "mid",
+          "late",
+          "pooled"
+        ]
+      }
+    },
+    {
+      "name": "lag_years",
+      "type": "integer",
+      "description": "Years from entry to listing.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "probability",
+      "type": "number",
+      "description": "Probability mass.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    }
+  ],
+  "primaryKey": [
+    "stage_group",
+    "lag_years"
+  ],
+  "missingValues": [
+    ""
+  ]
+}

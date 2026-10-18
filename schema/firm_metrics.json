@@ -1,0 +1,332 @@
+{
+  "fields": [
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "measurement_status",
+      "type": "string",
+      "description": "ranked or listed_separately.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "ranked",
+          "listed_separately"
+        ]
+      }
+    },
+    {
+      "name": "rank",
+      "type": "integer",
+      "description": "Rank on the central headline figure (ranked firms). Neighbouring firms' ranges often overlap; see rank_range_best and rank_range_worst.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "consistency_adjusted_value_per_dollar",
+      "type": "number",
+      "description": "Headline figure (x).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_low",
+      "type": "number",
+      "description": "Headline at the low end of the range from estimated inputs.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_high",
+      "type": "number",
+      "description": "Headline at the high end of the range from estimated inputs.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "rank_range_best",
+      "type": "integer",
+      "description": "Best rank across the input range and the 19 alternative specifications.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "rank_range_worst",
+      "type": "integer",
+      "description": "Worst rank across the input range and the 19 alternative specifications.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "value_per_dollar",
+      "type": "number",
+      "description": "V / K: primary value at the end date divided by capital at risk (x).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_per_dollar_low",
+      "type": "number",
+      "description": "value_per_dollar at the low end of the range.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_per_dollar_high",
+      "type": "number",
+      "description": "value_per_dollar at the high end of the range.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "rank_value_per_dollar",
+      "type": "integer",
+      "description": "Rank on plain value per dollar among ranked firms.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "value_per_dollar_beyond_largest",
+      "type": "number",
+      "description": "(V - V_top) / K, where V_top is the primary value of the largest company (x).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "beyond_largest_low",
+      "type": "number",
+      "description": "value_per_dollar_beyond_largest at the low end of the range.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "beyond_largest_high",
+      "type": "number",
+      "description": "value_per_dollar_beyond_largest at the high end of the range.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_one_fifth_weight",
+      "type": "number",
+      "description": "Headline with a fifth of the weight on depth.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_half_weight",
+      "type": "number",
+      "description": "Headline with half the weight on depth (version 5 headline).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_beyond_two_largest",
+      "type": "number",
+      "description": "Headline with depth measured beyond the two largest companies.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_primary_usd_bn",
+      "type": "number",
+      "description": "V: sum of holdings.primary_value_counted_usd_bn over the firm's core venture lines. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capital_at_risk_usd_bn",
+      "type": "number",
+      "description": "K: sum of fund_vehicles.capital_at_risk_usd_m over the firm's in-scope vehicles, in billions. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "companies",
+      "type": "integer",
+      "description": "Number of listings with primary value.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "largest_company_listing_id",
+      "type": "string",
+      "description": "Listing with the largest primary value."
+    },
+    {
+      "name": "largest_company_share",
+      "type": "number",
+      "description": "Share of V from the largest company.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "could_fall_over_30pct",
+      "type": "boolean",
+      "description": "True if the headline would fall by more than 30% at the low end of the range (marked with a diamond in the report).",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ]
+    },
+    {
+      "name": "capital_low_confidence_share",
+      "type": "number",
+      "description": "Share of K resting on low-confidence fund sizes.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "value_estimated_share",
+      "type": "number",
+      "description": "Share of V resting on estimated stakes.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "mean_year_capital_at_risk",
+      "type": "number",
+      "description": "Capital-weighted mean year in which capital at risk was drawn."
+    },
+    {
+      "name": "rank_vs_qqq",
+      "type": "integer",
+      "description": "Rank on the annualised measure against the QQQ.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "direct_alpha_vs_median_firm",
+      "type": "number",
+      "description": "Adjusted Direct Alpha minus the median ranked firm's (fraction per year)."
+    },
+    {
+      "name": "direct_alpha_vs_qqq_adjusted",
+      "type": "number",
+      "description": "Direct Alpha against the Nasdaq-100 (QQQ) on the adjusted value (fraction per year)."
+    },
+    {
+      "name": "pme_vs_qqq_adjusted",
+      "type": "number",
+      "description": "Kaplan-Schoar public market equivalent on the adjusted value (x)."
+    },
+    {
+      "name": "irr_adjusted",
+      "type": "number",
+      "description": "Internal rate of return on the adjusted value (fraction per year)."
+    },
+    {
+      "name": "direct_alpha_vs_qqq_unadjusted",
+      "type": "number",
+      "description": "Direct Alpha on the plain value (fraction per year)."
+    },
+    {
+      "name": "pme_vs_qqq_unadjusted",
+      "type": "number",
+      "description": "Kaplan-Schoar PME on the plain value (x)."
+    },
+    {
+      "name": "irr_unadjusted",
+      "type": "number",
+      "description": "Internal rate of return on the plain value (fraction per year)."
+    },
+    {
+      "name": "rank_total_value_all_core",
+      "type": "integer",
+      "description": "Rank on primary value among all core venture holders.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "rank_stage_weighted_all_core",
+      "type": "integer",
+      "description": "Rank on stage-weighted value among all core venture holders.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "rank_ex_spacex",
+      "type": "integer",
+      "description": "Rank with SpaceX excluded (a different question, shown separately).",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "reason_not_ranked",
+      "type": "string",
+      "description": "Why a firm listed separately is not ranked."
+    },
+    {
+      "name": "note",
+      "type": "string",
+      "description": "Changes and judgments behind the firm's figures."
+    }
+  ],
+  "primaryKey": [
+    "firm_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "largest_company_listing_id"
+      ],
+      "reference": {
+        "resource": "listings",
+        "fields": [
+          "listing_id"
+        ]
+      }
+    }
+  ]
+}

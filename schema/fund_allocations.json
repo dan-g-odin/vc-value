@@ -1,0 +1,164 @@
+{
+  "fields": [
+    {
+      "name": "allocation_id",
+      "type": "string",
+      "description": "Stable identifier.",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^A[0-9]{5}$"
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "listing_id",
+      "type": "string",
+      "description": "Listing.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "generation_id",
+      "type": "string",
+      "description": "Fund generation credited (blank when the shares sit outside any generation)."
+    },
+    {
+      "name": "vehicle_outside_fund_files",
+      "type": "string",
+      "description": "Vehicle outside the fund files that holds the shares (single-company vehicles, general-partner entities, roll-over vehicles), or UNKNOWN."
+    },
+    {
+      "name": "share_of_firm_stake",
+      "type": "number",
+      "description": "Share of the firm's shares in the listing held by this generation or vehicle.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "primary_fraction",
+      "type": "number",
+      "description": "Share of these shares counted as bought from the company.",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "primary_value_usd_bn",
+      "type": "number",
+      "description": "Primary value credited to this generation or vehicle. Unit: USD bn.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_end_usd_bn",
+      "type": "number",
+      "description": "Value of these shares at the 2 October 2026 close, primary or not. Unit: USD bn.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "basis",
+      "type": "string",
+      "description": "Evidence for the split: form3, form4, 13g, prospectus, ira (investors' rights agreement), 13f+ledger, press, name (holder name), rule (fund-vintage rule) and variants."
+    },
+    {
+      "name": "basis_group",
+      "type": "string",
+      "description": "Grouping of basis used in the report.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "per_fund_share_counts",
+          "adviser_values_or_press",
+          "holder_name",
+          "vintage_rule",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "confidence",
+      "type": "string",
+      "description": "Confidence in the split.",
+      "constraints": {
+        "enum": [
+          "HIGH",
+          "MED",
+          "LOW"
+        ]
+      }
+    },
+    {
+      "name": "split_source",
+      "type": "string",
+      "description": "filing_research: per-fund filing research on large positions; manual: reconciled by hand from filings; rule: holder-name or vintage rule.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "filing_research",
+          "manual",
+          "rule"
+        ]
+      }
+    }
+  ],
+  "primaryKey": [
+    "allocation_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "listing_id"
+      ],
+      "reference": {
+        "resource": "listings",
+        "fields": [
+          "listing_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "generation_id"
+      ],
+      "reference": {
+        "resource": "fund_generations",
+        "fields": [
+          "generation_id"
+        ]
+      }
+    }
+  ]
+}

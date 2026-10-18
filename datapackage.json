@@ -1,0 +1,249 @@
+{
+  "profile": "tabular-data-package",
+  "name": "vc-value",
+  "title": "Venture value created per dollar at risk: US venture-backed listings, 2014-2026",
+  "description": "Stakes held by venture firms and other institutional investors in 424 US venture-backed listings (January 2014 to June 2026, excluding life sciences), the funds that held them, the fund histories of 180 venture firms, and the derived rankings of firms and funds by value created per dollar of capital at risk. All values are measured at a fixed performance end date: the close on 2 October 2026.",
+  "version": "1.0.0",
+  "created": "2026-10-18T00:00:00Z",
+  "homepage": "https://github.com/dan-g-odin/vc-value",
+  "keywords": [
+    "venture-capital",
+    "private-equity",
+    "ipo",
+    "value-creation",
+    "fund-performance",
+    "public-market-equivalent",
+    "direct-alpha",
+    "open-data",
+    "dataset"
+  ],
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Creative Commons Attribution 4.0 International"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Dan Gray",
+      "role": "author",
+      "organization": "Odin"
+    }
+  ],
+  "sources": [
+    {
+      "title": "SEC EDGAR filings (prospectuses, Forms 3, 4 and D, Schedules 13G/13D, Form 13F)",
+      "path": "https://www.sec.gov/edgar/search/"
+    },
+    {
+      "title": "Odin IPO inputs dataset (listing dates, sectors, share counts, offer prices)"
+    },
+    {
+      "title": "Exchange closes on 2 October 2026 (stockanalysis.com, Yahoo Finance)"
+    },
+    {
+      "title": "Fund closes: firm and press announcements, Form D and Form ADV data, public pension reports, public database profiles"
+    }
+  ],
+  "resources": [
+    {
+      "name": "listings",
+      "path": "data/core/listings.csv",
+      "profile": "tabular-data-resource",
+      "title": "Listings (the universe)",
+      "description": "One row per US venture-backed, non-life-sciences listing from 24 January 2014 to 12 June 2026 (IPOs, ADR offerings, direct listings and SPAC mergers). Company values are for the shares outstanding at listing, held to the 2 October 2026 close.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/listings.json"
+    },
+    {
+      "name": "firms",
+      "path": "data/core/firms.csv",
+      "profile": "tabular-data-resource",
+      "title": "Firms and other holders",
+      "description": "One row per investment firm or other institutional holder that appears in holdings.csv. Natural persons are not included. measurement_status says whether the firm is ranked on value per dollar, measured but listed separately, or not measured.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/firms.json"
+    },
+    {
+      "name": "fund_generations",
+      "path": "data/core/fund_generations.csv",
+      "profile": "tabular-data-resource",
+      "title": "Fund generations",
+      "description": "One row per fund generation: a main fund with the parallel, principals', entrepreneurs', annex and partners' side vehicles that invest beside it. Single-company vehicles form their own generation. This is the unit of the fund ranking.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/fund_generations.json"
+    },
+    {
+      "name": "fund_vehicles",
+      "path": "data/core/fund_vehicles.csv",
+      "profile": "tabular-data-resource",
+      "title": "Fund vehicles (fund histories)",
+      "description": "One row per fund vehicle in the fund histories of 180 firms: vintage, committed capital, strategy, scope and capital at risk, with source and confidence. Capital deployed per year by firms without a fund series is recorded as one row per year.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/fund_vehicles.json"
+    },
+    {
+      "name": "holdings",
+      "path": "data/core/holdings.csv",
+      "profile": "tabular-data-resource",
+      "title": "Holdings (holder lines)",
+      "description": "One row per holder line: the stake an institutional holder held going into a listing, as a share of post-offering shares, with its value at the end date, the share bought from the company (primary) and provenance. Holdings of natural persons are not included.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/holdings.json"
+    },
+    {
+      "name": "fund_allocations",
+      "path": "data/core/fund_allocations.csv",
+      "profile": "tabular-data-resource",
+      "title": "Fund allocations",
+      "description": "How each ranked or measured firm's stake in a listing is split between its fund generations, with the primary fraction of each part and the evidence. Value held by vehicles outside any fund generation carries vehicle_outside_fund_files instead of generation_id.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/fund_allocations.json"
+    },
+    {
+      "name": "benchmark_prices",
+      "path": "data/core/benchmark_prices.csv",
+      "profile": "tabular-data-resource",
+      "title": "Public-market benchmark prices",
+      "description": "Nasdaq-100 year-end closes (before 2017) and QQQ monthly closes (from November 2016) used for the annualised comparison, and the QQQ close on the 2 October 2026 end date.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/benchmark_prices.json"
+    },
+    {
+      "name": "firm_metrics",
+      "path": "data/derived/firm_metrics.csv",
+      "profile": "tabular-data-resource",
+      "title": "Firm metrics (value per dollar ranking)",
+      "description": "One row per measured firm: the ranked firms and the firms listed separately. All values at the 2 October 2026 close. Headline: consistency-adjusted value per dollar = (1 + V/K)^(2/3) x (1 + (V - V_top)/K)^(1/3) - 1.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/firm_metrics.json"
+    },
+    {
+      "name": "firm_robustness",
+      "path": "data/derived/firm_robustness.csv",
+      "profile": "tabular-data-resource",
+      "title": "Firm ranks under alternative specifications",
+      "description": "Rank and headline of each ranked firm under the main specification, the 19 alternative specifications and the ex-SpaceX view (see specifications.csv).",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/firm_robustness.json"
+    },
+    {
+      "name": "fund_metrics",
+      "path": "data/derived/fund_metrics.csv",
+      "profile": "tabular-data-resource",
+      "title": "Fund metrics (fund ranking)",
+      "description": "One row per fund generation with value: value per dollar and the consistency-adjusted headline at the 2 October 2026 close, with ranges. Ranked: rankable generations of ranked firms.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/fund_metrics.json"
+    },
+    {
+      "name": "listing_venture_summary",
+      "path": "data/derived/listing_venture_summary.csv",
+      "profile": "tabular-data-resource",
+      "title": "Venture ownership and value by listing",
+      "description": "One row per listing with a holder line: long-term value created, and the stake and primary value of venture funds (firms with counts_as_venture_fund = true). The report's top 20 companies are rank_by_value_end 1 to 20.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/listing_venture_summary.json"
+    },
+    {
+      "name": "holding_stage_weights",
+      "path": "data/derived/holding_stage_weights.csv",
+      "profile": "tabular-data-resource",
+      "title": "Stage weights by holding (companion ranking)",
+      "description": "Entry-stage weights and stage-weighted values of each holder line, used only by the companion stage-weighted ranking.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/holding_stage_weights.json"
+    },
+    {
+      "name": "stage_weighted_rankings",
+      "path": "data/derived/stage_weighted_rankings.csv",
+      "profile": "tabular-data-resource",
+      "title": "Stage-weighted total-value rankings (companion)",
+      "description": "Companion ranking of total value created, weighted by the stage of each firm's first round, in three layers.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/stage_weighted_rankings.json"
+    },
+    {
+      "name": "timing_weights",
+      "path": "data/reference/timing_weights.csv",
+      "profile": "tabular-data-resource",
+      "title": "Timing weights for capital at risk",
+      "description": "Share of a fund's eventual listings expected to fall inside the 2014-2026 window, by vintage and strategy (main specification), and the weight for capital deployed in a given calendar year.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/timing_weights.json"
+    },
+    {
+      "name": "lag_distributions",
+      "path": "data/reference/lag_distributions.csv",
+      "profile": "tabular-data-resource",
+      "title": "Entry-to-listing lag distributions",
+      "description": "Probability that a listing occurs a given number of years after the firm's entry, by entry-stage group, estimated from 554 entry-to-listing pairs corrected for double truncation (Efron-Petrosian) and smoothed.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/lag_distributions.json"
+    },
+    {
+      "name": "strategy_parameters",
+      "path": "data/reference/strategy_parameters.csv",
+      "profile": "tabular-data-resource",
+      "title": "Deployment and stage-mix parameters",
+      "description": "Deployment schedule (share of commitments invested in each year from vintage) and entry-stage mix by fund strategy, used to compute timing weights.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/strategy_parameters.json"
+    },
+    {
+      "name": "specifications",
+      "path": "data/reference/specifications.csv",
+      "profile": "tabular-data-resource",
+      "title": "Robustness specifications",
+      "description": "The main specification, the 19 alternative specifications and the ex-SpaceX view used in firm_robustness.csv.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/specifications.json"
+    },
+    {
+      "name": "coverage_register",
+      "path": "data/reference/coverage_register.csv",
+      "profile": "tabular-data-resource",
+      "title": "Coverage-check register",
+      "description": "Every (firm, listing) pair the version 7 coverage check found missing from the holder tables, with sources, 13F counts and the outcome.",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": "schema/coverage_register.json"
+    }
+  ]
+}

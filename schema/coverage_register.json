@@ -1,0 +1,152 @@
+{
+  "fields": [
+    {
+      "name": "register_id",
+      "type": "string",
+      "description": "Stable identifier.",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^G[0-9]{3}$"
+      }
+    },
+    {
+      "name": "firm_name_as_found",
+      "type": "string",
+      "description": "Firm as found by the sweeps.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm the pair was attributed to in holdings.csv, where it was added."
+    },
+    {
+      "name": "listing_id",
+      "type": "string",
+      "description": "Listing.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "company_value_usd_bn",
+      "type": "number",
+      "description": "Company value at the end date. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "sources",
+      "type": "string",
+      "description": "Sweeps that found the pair (investor agreement, 13F, name probe)."
+    },
+    {
+      "name": "entity",
+      "type": "string",
+      "description": "Entities named in the source."
+    },
+    {
+      "name": "shares_13f",
+      "type": "number",
+      "description": "Shares in the first 13F after listing, where found.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "pct_13f",
+      "type": "number",
+      "description": "shares_13f as a percentage of post-offering shares. Unit: %.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "firm_in_book_before_check",
+      "type": "string",
+      "description": "Whether and how the firm was in the holder tables before the check."
+    },
+    {
+      "name": "outcome",
+      "type": "string",
+      "description": "Outcome of the pair.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "outcome_group",
+      "type": "string",
+      "description": "Grouping of outcome used in the report.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "added_ranked",
+          "added_zero_primary",
+          "added_listed_separately",
+          "added_no_fund_history",
+          "checked_not_added",
+          "checked_not_established",
+          "screened_out",
+          "immaterial_13f_lot",
+          "outside_ranking_by_type"
+        ]
+      }
+    },
+    {
+      "name": "outcome_note",
+      "type": "string",
+      "description": "Sizing and reasoning."
+    },
+    {
+      "name": "stake_pct_added",
+      "type": "number",
+      "description": "Stake added to holdings.csv (% of post-offering shares). Unit: %.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "stake_pct_added_x_primary",
+      "type": "number",
+      "description": "stake_pct_added x primary share. Unit: %.",
+      "constraints": {
+        "minimum": 0
+      }
+    }
+  ],
+  "primaryKey": [
+    "register_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "listing_id"
+      ],
+      "reference": {
+        "resource": "listings",
+        "fields": [
+          "listing_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    }
+  ]
+}

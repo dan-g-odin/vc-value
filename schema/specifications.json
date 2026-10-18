@@ -1,0 +1,51 @@
+{
+  "fields": [
+    {
+      "name": "specification_id",
+      "type": "string",
+      "description": "Identifier.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Short description.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "group",
+      "type": "string",
+      "description": "main; adjustment (form of the consistency adjustment); capital_at_risk; numerator; different_question.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "main",
+          "adjustment",
+          "capital_at_risk",
+          "numerator",
+          "different_question"
+        ]
+      }
+    },
+    {
+      "name": "rank_correlation_with_main",
+      "type": "number",
+      "description": "Spearman rank correlation of the headline with the main specification across ranked firms.",
+      "constraints": {
+        "minimum": -1,
+        "maximum": 1
+      }
+    }
+  ],
+  "primaryKey": [
+    "specification_id"
+  ],
+  "missingValues": [
+    ""
+  ]
+}

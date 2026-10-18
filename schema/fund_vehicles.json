@@ -1,0 +1,216 @@
+{
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": "string",
+      "description": "Stable identifier: firm_id, two hyphens, and a slug of fund_name.",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^[a-z0-9-]+$"
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm managing the vehicle.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "generation_id",
+      "type": "string",
+      "description": "Fund generation the vehicle belongs to.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "fund_name",
+      "type": "string",
+      "description": "Legal or reported name of the vehicle.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "role",
+      "type": "string",
+      "description": "Role of the vehicle within its generation.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "main",
+          "parallel",
+          "principals",
+          "entrepreneurs",
+          "annex",
+          "side",
+          "opportunity",
+          "spv",
+          "feeder",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "vintage",
+      "type": "integer",
+      "description": "Vintage year (first close or first sale).",
+      "constraints": {
+        "required": true,
+        "minimum": 1960,
+        "maximum": 2026
+      }
+    },
+    {
+      "name": "is_capital_deployed_row",
+      "type": "boolean",
+      "description": "True for rows recording capital deployed in one calendar year (firms without a fund series); their timing weight is deployed_year_weight.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "committed_usd_m",
+      "type": "number",
+      "description": "Committed capital (for \"capital deployed\" rows, capital deployed in that year). Unit: USD m.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "size_basis",
+      "type": "string",
+      "description": "How the size was established (for example formd_sold, press_final_close, implied from holdings, estimate)."
+    },
+    {
+      "name": "strategy",
+      "type": "string",
+      "description": "Investment strategy, which sets the deployment pace and stage mix used for capital at risk.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "seed",
+          "early",
+          "multi",
+          "growth"
+        ]
+      }
+    },
+    {
+      "name": "mandate",
+      "type": "string",
+      "description": "Mandate as researched (for example flagship, opportunity, seed, sector fund)."
+    },
+    {
+      "name": "geography",
+      "type": "string",
+      "description": "Geographic mandate."
+    },
+    {
+      "name": "in_scope",
+      "type": "string",
+      "description": "Scope in the main specification: Y in capital at risk; N excluded (life-sciences, public-equity, credit, fund-of-funds and similar vehicles); S sensitivity only (renminbi, crypto, secondary or unclear vehicles).",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "Y",
+          "N",
+          "S"
+        ]
+      }
+    },
+    {
+      "name": "in_scope_as_researched",
+      "type": "string",
+      "description": "Scope as originally researched, before review."
+    },
+    {
+      "name": "life_sciences_share",
+      "type": "number",
+      "description": "Estimated share of a generalist fund invested in life sciences (used only in a sensitivity check).",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "size_confidence",
+      "type": "string",
+      "description": "Confidence in committed_usd_m. Low-confidence sizes are halved and doubled in the ranges.",
+      "constraints": {
+        "enum": [
+          "HIGH",
+          "MED",
+          "LOW"
+        ]
+      }
+    },
+    {
+      "name": "capital_at_risk_usd_m",
+      "type": "number",
+      "description": "committed_usd_m x timing_weight for in-scope vehicles; 0 otherwise. Unit: USD m.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "timing_weight",
+      "type": "number",
+      "description": "Share of the vehicle's eventual listings expected to fall inside the 2014-2026 window (see timing_weights.csv).",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "source_url",
+      "type": "string",
+      "description": "Main source (EDGAR Form D, press release, filing)."
+    },
+    {
+      "name": "note",
+      "type": "string",
+      "description": "Evidence and reasoning behind the size, vintage and scope."
+    }
+  ],
+  "primaryKey": [
+    "vehicle_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "generation_id"
+      ],
+      "reference": {
+        "resource": "fund_generations",
+        "fields": [
+          "generation_id"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "fields": [
+    {
+      "name": "holding_id",
+      "type": "string",
+      "description": "Stable identifier of the holder line.",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^H[0-9]{4}$"
+      }
+    },
+    {
+      "name": "listing_id",
+      "type": "string",
+      "description": "Listing.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm the line is attributed to (all vehicles a firm controls are combined).",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "holder_as_filed",
+      "type": "string",
+      "description": "Holder as named in the source filing."
+    },
+    {
+      "name": "holder_type",
+      "type": "string",
+      "description": "Holder category of this line.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "core_venture",
+          "growth_crossover",
+          "corporate_strategic",
+          "mutual_fund",
+          "hedge_fund",
+          "sovereign",
+          "family_office",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "stake_pct",
+      "type": "number",
+      "description": "Shares held going into the listing, as-converted, as a percentage of post-offering shares (after closing for SPAC mergers); blank where the holding is known but not sized (stake_confidence KNOWN_UNSIZED). Unit: %.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    {
+      "name": "stake_pct_low",
+      "type": "number",
+      "description": "Low estimate of stake_pct where the stake is estimated. Unit: %.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    {
+      "name": "stake_pct_high",
+      "type": "number",
+      "description": "High estimate of stake_pct where the stake is estimated. Unit: %.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    {
+      "name": "stake_confidence",
+      "type": "string",
+      "description": "Confidence in stake_pct (KNOWN_UNSIZED: holding known but not sized).",
+      "constraints": {
+        "enum": [
+          "HIGH",
+          "MED",
+          "LOW",
+          "KNOWN_UNSIZED"
+        ]
+      }
+    },
+    {
+      "name": "stake_source",
+      "type": "string",
+      "description": "Filing or method behind stake_pct (for example a 424B4 footnote, Form 3, 13F count, round arithmetic)."
+    },
+    {
+      "name": "primary_evidence",
+      "type": "string",
+      "description": "Evidence grade for whether the shares were bought from the company.",
+      "constraints": {
+        "enum": [
+          "primary_confirmed",
+          "primary_likely",
+          "position_only",
+          "secondary_major",
+          "mostly_secondary",
+          "secondary_only",
+          "not_established",
+          "not_assessed"
+        ]
+      }
+    },
+    {
+      "name": "secondary_fraction",
+      "type": "number",
+      "description": "Quantified share of the stake bought from other holders, where one is known.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "primary_share",
+      "type": "number",
+      "description": "Share of the stake counted as bought from the company (primary).",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "primary_share_low",
+      "type": "number",
+      "description": "Low case of primary_share where it is uncertain.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "primary_share_high",
+      "type": "number",
+      "description": "High case of primary_share where it is uncertain.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "first_round",
+      "type": "string",
+      "description": "Round of the firm's first investment in the company."
+    },
+    {
+      "name": "entry_year",
+      "type": "integer",
+      "description": "Year of the firm's first investment.",
+      "constraints": {
+        "minimum": 1980,
+        "maximum": 2026
+      }
+    },
+    {
+      "name": "led_round",
+      "type": "string",
+      "description": "Whether the firm led a round.",
+      "constraints": {
+        "enum": [
+          "yes",
+          "no",
+          "co-led",
+          "likely",
+          "unknown"
+        ]
+      }
+    },
+    {
+      "name": "led_round_detail",
+      "type": "string",
+      "description": "Detail behind led_round where recorded."
+    },
+    {
+      "name": "board_seat_at_listing",
+      "type": "string",
+      "description": "Whether the firm held a board seat at listing.",
+      "constraints": {
+        "enum": [
+          "yes",
+          "no",
+          "likely",
+          "right_only",
+          "unknown"
+        ]
+      }
+    },
+    {
+      "name": "board_seat_detail",
+      "type": "string",
+      "description": "Detail behind board_seat_at_listing where recorded."
+    },
+    {
+      "name": "secondary_noted",
+      "type": "string",
+      "description": "Whether a sale or purchase of existing shares was noted.",
+      "constraints": {
+        "enum": [
+          "yes",
+          "no"
+        ]
+      }
+    },
+    {
+      "name": "value_at_listing_usd_bn",
+      "type": "number",
+      "description": "stake_pct / 100 x listings.value_at_listing_usd_bn. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_end_usd_bn",
+      "type": "number",
+      "description": "stake_pct / 100 x listings.value_end_usd_bn (2 October 2026 close). Unit: USD bn.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "primary_value_usd_bn",
+      "type": "number",
+      "description": "value_end_usd_bn x primary_share. Unit: USD bn.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "inside_capital_at_risk_share",
+      "type": "number",
+      "description": "Share of the line held by vehicles inside the firm's capital at risk (below 1 where part is held by vehicles outside it, such as Sequoia's Global Equities fund).",
+      "constraints": {
+        "required": true,
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "primary_value_counted_usd_bn",
+      "type": "number",
+      "description": "primary_value_usd_bn x inside_capital_at_risk_share: the value counted in firm_metrics. Unit: USD bn.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "provenance_confidence",
+      "type": "string",
+      "description": "Confidence in the primary-share assessment (blank for lines added in the version 7 coverage check, graded in stake_confidence).",
+      "constraints": {
+        "enum": [
+          "HIGH",
+          "MED",
+          "LOW"
+        ]
+      }
+    },
+    {
+      "name": "provenance_source_url",
+      "type": "string",
+      "description": "Source URLs, separated by \";\"."
+    },
+    {
+      "name": "provenance_note",
+      "type": "string",
+      "description": "Evidence, method and arithmetic behind the stake and primary share."
+    },
+    {
+      "name": "change_note_v17",
+      "type": "string",
+      "description": "Correction made in book v17 (report version 8), with its filing."
+    }
+  ],
+  "primaryKey": [
+    "holding_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "listing_id"
+      ],
+      "reference": {
+        "resource": "listings",
+        "fields": [
+          "listing_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "fields": [
+    {
+      "name": "generation_id",
+      "type": "string",
+      "description": "Fund generation.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "rank",
+      "type": "integer",
+      "description": "Rank on the headline among rankable generations of ranked firms.",
+      "constraints": {
+        "minimum": 1
+      }
+    },
+    {
+      "name": "fund_display_name",
+      "type": "string",
+      "description": "Name used in the report.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "vintage",
+      "type": "integer",
+      "description": "Vintage year.",
+      "constraints": {
+        "minimum": 1960,
+        "maximum": 2026
+      }
+    },
+    {
+      "name": "committed_usd_m",
+      "type": "number",
+      "description": "Committed capital of in-scope vehicles. Unit: USD m.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capital_at_risk_usd_m",
+      "type": "number",
+      "description": "Capital at risk. Unit: USD m.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_primary_usd_bn",
+      "type": "number",
+      "description": "Sum of fund_allocations.primary_value_usd_bn credited to the generation. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_per_dollar",
+      "type": "number",
+      "description": "Primary value divided by capital at risk (x).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "consistency_adjusted_value_per_dollar",
+      "type": "number",
+      "description": "Headline on the generation's companies (x).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_low",
+      "type": "number",
+      "description": "Low end of the range (rankable generations).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "adjusted_high",
+      "type": "number",
+      "description": "High end of the range (rankable generations).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "companies",
+      "type": "integer",
+      "description": "Number of listings with primary value.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "largest_company_listing_id",
+      "type": "string",
+      "description": "Listing with the largest primary value."
+    },
+    {
+      "name": "largest_company_share",
+      "type": "number",
+      "description": "Share of the generation's value from its largest company.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "largest_company_split_basis",
+      "type": "string",
+      "description": "Evidence for the split of the largest company's shares."
+    },
+    {
+      "name": "share_of_value_split_from_filings",
+      "type": "number",
+      "description": "Share of the generation's value split between funds from per-fund filings.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "name": "size_confidence",
+      "type": "string",
+      "description": "Confidence in the generation's size.",
+      "constraints": {
+        "enum": [
+          "HIGH",
+          "MED",
+          "LOW"
+        ]
+      }
+    },
+    {
+      "name": "rankable",
+      "type": "boolean",
+      "description": "True if the generation can be ranked.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "not_ranked_reason",
+      "type": "string",
+      "description": "Why the generation is not ranked."
+    }
+  ],
+  "primaryKey": [
+    "generation_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "generation_id"
+      ],
+      "reference": {
+        "resource": "fund_generations",
+        "fields": [
+          "generation_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    },
+    {
+      "fields": [
+        "largest_company_listing_id"
+      ],
+      "reference": {
+        "resource": "listings",
+        "fields": [
+          "listing_id"
+        ]
+      }
+    }
+  ]
+}

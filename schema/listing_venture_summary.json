@@ -1,0 +1,95 @@
+{
+  "fields": [
+    {
+      "name": "listing_id",
+      "type": "string",
+      "description": "Listing.",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "rank_by_value_end",
+      "type": "integer",
+      "description": "Rank by value_end_usd_bn.",
+      "constraints": {
+        "required": true,
+        "minimum": 1
+      }
+    },
+    {
+      "name": "value_at_listing_usd_bn",
+      "type": "number",
+      "description": "Value at listing. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_end_usd_bn",
+      "type": "number",
+      "description": "Value at the 2 October 2026 close. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "multiple_since_listing",
+      "type": "number",
+      "description": "value_end_usd_bn / value_at_listing_usd_bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "venture_funds_stake_pct",
+      "type": "number",
+      "description": "Sum of stake_pct x inside_capital_at_risk_share over venture-fund lines. Unit: %.",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    {
+      "name": "venture_primary_value_usd_bn",
+      "type": "number",
+      "description": "Sum of primary_value_counted_usd_bn over venture-fund lines. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "n_venture_fund_holders",
+      "type": "integer",
+      "description": "Number of venture firms with a stake.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "largest_venture_holders",
+      "type": "string",
+      "description": "Up to three largest venture holders with their stakes."
+    }
+  ],
+  "primaryKey": [
+    "listing_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "listing_id"
+      ],
+      "reference": {
+        "resource": "listings",
+        "fields": [
+          "listing_id"
+        ]
+      }
+    }
+  ]
+}

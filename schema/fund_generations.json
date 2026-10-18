@@ -1,0 +1,156 @@
+{
+  "fields": [
+    {
+      "name": "generation_id",
+      "type": "string",
+      "description": "Stable identifier: firm_id, two hyphens, and a slug of generation_label.",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^[a-z0-9-]+$"
+      }
+    },
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Firm managing the generation.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "generation_label",
+      "type": "string",
+      "description": "Short label of the generation (for example \"FF II\", \"Index VI\").",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "vintage",
+      "type": "integer",
+      "description": "Vintage year of the generation's main vehicle.",
+      "constraints": {
+        "minimum": 1960,
+        "maximum": 2026
+      }
+    },
+    {
+      "name": "committed_usd_m",
+      "type": "number",
+      "description": "Committed capital of the generation's in-scope vehicles. Unit: USD m.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "capital_at_risk_usd_m",
+      "type": "number",
+      "description": "Sum of capital_at_risk_usd_m over the generation's in-scope vehicles. Unit: USD m.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "vehicle_roles",
+      "type": "string",
+      "description": "Roles of the vehicles in the generation, separated by \"|\"."
+    },
+    {
+      "name": "is_growth_generation",
+      "type": "boolean",
+      "description": "True if the generation's largest vehicle follows a growth strategy.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ]
+    },
+    {
+      "name": "is_single_company_vehicle",
+      "type": "boolean",
+      "description": "True for single-company vehicles (SPVs), which are not ranked.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ]
+    },
+    {
+      "name": "fund_geography",
+      "type": "string",
+      "description": "Geographic focus used by the attribution rule (US/Global or a country)."
+    },
+    {
+      "name": "has_low_confidence_size",
+      "type": "boolean",
+      "description": "True if any in-scope vehicle has a low-confidence size.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ]
+    },
+    {
+      "name": "size_confidence",
+      "type": "string",
+      "description": "Confidence in the size of the main vehicle.",
+      "constraints": {
+        "enum": [
+          "HIGH",
+          "MED",
+          "LOW"
+        ]
+      }
+    },
+    {
+      "name": "n_vehicles",
+      "type": "integer",
+      "description": "Number of vehicles in the generation.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "rankable",
+      "type": "boolean",
+      "description": "True if the generation can enter the fund ranking.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "not_ranked_reason",
+      "type": "string",
+      "description": "Why a generation cannot be ranked (single-company vehicle, evergreen or annual pool, cross-generation scheme, firm listed separately, no capital at risk)."
+    }
+  ],
+  "primaryKey": [
+    "generation_id"
+  ],
+  "missingValues": [
+    ""
+  ],
+  "foreignKeys": [
+    {
+      "fields": [
+        "firm_id"
+      ],
+      "reference": {
+        "resource": "firms",
+        "fields": [
+          "firm_id"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+specification_id,title,group,rank_correlation_with_main
+main,Main specification,main,1.0
+depth_weight_one_fifth,One-fifth weight on depth (one company: 25x becomes 12.6x),adjustment,0.996003
+depth_weight_half,Half weight on depth (version 5's headline),adjustment,0.992422
+depth_beyond_two_largest,Depth measured beyond the two largest companies,adjustment,0.994186
+weight_value_by_entry_stage,"Weight value by entry stage, as the stage-weighted ranking does",numerator,0.947019
+lags_two_years_longer,Lags two years longer,capital_at_risk,0.972928
+box_weights_2004_2020,"Box weights (vintages 2004-2020 count in full, others not at all)",capital_at_risk,0.979802
+no_weight_floor,No weight floor,capital_at_risk,0.989256
+pooled_lag_distribution,One pooled lag distribution for all stages,capital_at_risk,0.992716
+lags_one_year_shorter,Lags one year shorter,capital_at_risk,0.994023
+include_sensitivity_funds,"Include sensitivity-only funds (renminbi, crypto, secondary vehicles, unclear purpose)",capital_at_risk,0.997416
+deduct_life_sciences_share,Deduct the life-sciences share of generalist funds,capital_at_risk,0.997367
+slower_deployment,Slower deployment,capital_at_risk,0.997004
+low_confidence_sizes_x0_7,Low-confidence fund sizes x0.7,capital_at_risk,0.998466
+low_confidence_sizes_x1_3,Low-confidence fund sizes x1.3,capital_at_risk,0.998927
+us_and_global_funds_only,"US and global funds only (funds dedicated to Europe, Israel, China, India or South-East Asia removed)",capital_at_risk,0.997053
+ipo_market_timing,IPO-market timing (weights follow hot and cold listing years),capital_at_risk,0.999528
+faster_deployment,Faster deployment,capital_at_risk,0.999947
+sequoia_global_growth_half,Sequoia Global Growth funds at 50%,numerator,0.999989
+keep_sequoia_global_equities_heritage,Keep the Sequoia Global Equities and Heritage positions,numerator,0.99994
+ex_spacex,"Excluding SpaceX (a different question, shown separately)",different_question,0.951938

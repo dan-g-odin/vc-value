@@ -1,0 +1,121 @@
+{
+  "fields": [
+    {
+      "name": "firm_id",
+      "type": "string",
+      "description": "Stable identifier (lower-case slug of firm_name).",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^[a-z0-9-]+$"
+      }
+    },
+    {
+      "name": "firm_name",
+      "type": "string",
+      "description": "Name used in the analysis. Renamed firms are merged with their predecessors (for example Bullet Time Ventures into Techstars Ventures).",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "holder_type",
+      "type": "string",
+      "description": "Holder category. Only core_venture firms can be ranked; for the two holders with lines of more than one type, the predominant type.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "core_venture",
+          "growth_crossover",
+          "corporate_strategic",
+          "mutual_fund",
+          "hedge_fund",
+          "sovereign",
+          "family_office",
+          "other"
+        ]
+      }
+    },
+    {
+      "name": "measurement_status",
+      "type": "string",
+      "description": "ranked: in the main value-per-dollar ranking; listed_separately: measured the same way but outside the definition of an independent venture manager; not_scored_no_fund_history: core venture holder without a fund history; not_measured_holder_type: growth, crossover, hedge, mutual-fund, corporate, sovereign and other holders.",
+      "constraints": {
+        "required": true,
+        "enum": [
+          "ranked",
+          "listed_separately",
+          "not_scored_no_fund_history",
+          "not_measured_holder_type"
+        ]
+      }
+    },
+    {
+      "name": "separate_listing_group",
+      "type": "string",
+      "description": "For listed_separately firms, the group they are reported in: identified_by_odin (firms Odin identified as outside the standard definition), same_test (firms failing the same test), newly_measured_v7 (holders measured in report version 7), family_office_or_individual.",
+      "constraints": {
+        "enum": [
+          "identified_by_odin",
+          "same_test",
+          "newly_measured_v7",
+          "family_office_or_individual"
+        ]
+      }
+    },
+    {
+      "name": "reason_not_ranked",
+      "type": "string",
+      "description": "Why a measured firm is not ranked, or why a core venture holder is not scored."
+    },
+    {
+      "name": "has_fund_history",
+      "type": "boolean",
+      "description": "True if fund_vehicles.csv holds the firm's fund history.",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "counts_as_venture_fund",
+      "type": "boolean",
+      "description": "True if the firm's holdings count as venture funds in listing_venture_summary.csv: core venture holders less money of individuals and families (family offices, angel groups, members' deal platforms and principals' own vehicles).",
+      "trueValues": [
+        "true"
+      ],
+      "falseValues": [
+        "false"
+      ],
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "n_listings",
+      "type": "integer",
+      "description": "Number of listings in which the firm has a holder line.",
+      "constraints": {
+        "required": true,
+        "minimum": 1
+      }
+    },
+    {
+      "name": "note",
+      "type": "string",
+      "description": "What changed for this firm across versions and key judgments behind its figures (measured firms only)."
+    }
+  ],
+  "primaryKey": [
+    "firm_id"
+  ],
+  "missingValues": [
+    ""
+  ]
+}

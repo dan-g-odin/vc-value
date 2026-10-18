@@ -1,0 +1,147 @@
+{
+  "fields": [
+    {
+      "name": "listing_id",
+      "type": "string",
+      "description": "Ticker at listing, used as the listing key throughout the dataset.",
+      "constraints": {
+        "required": true,
+        "unique": true,
+        "pattern": "^[A-Z0-9.]+$"
+      }
+    },
+    {
+      "name": "company",
+      "type": "string",
+      "description": "Company name.",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "listing_date",
+      "type": "date",
+      "description": "First trading day (IPO, ADR offering or direct listing) or SPAC merger closing date.",
+      "format": "default",
+      "constraints": {
+        "required": true
+      }
+    },
+    {
+      "name": "listing_year",
+      "type": "integer",
+      "description": "Calendar year of listing_date.",
+      "constraints": {
+        "required": true,
+        "minimum": 2014,
+        "maximum": 2026
+      }
+    },
+    {
+      "name": "sector",
+      "type": "string",
+      "description": "Sector classification of the source IPO dataset (blank for two listings: see docs/limitations.md).",
+      "constraints": {
+        "enum": [
+          "Software/SaaS",
+          "Internet/Consumer",
+          "Fintech",
+          "Transport/Mobility",
+          "Media/Entertainment",
+          "Hardware/Electronics",
+          "Consumer Goods",
+          "Energy/Climate",
+          "Semiconductors",
+          "Industrials",
+          "Real Estate",
+          "Other"
+        ]
+      }
+    },
+    {
+      "name": "offer_price_usd",
+      "type": "number",
+      "description": "Offer price per share, or per ADS for ADS issuers; the reference price for direct listings and SPAC mergers. Unit: USD.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "ads_ratio",
+      "type": "number",
+      "description": "Ordinary shares per ADS for issuers listed through ADSs; blank otherwise.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "shares_post_offering_m",
+      "type": "number",
+      "description": "Shares outstanding after the offering, all economic classes (after closing for SPAC mergers, excluding unvested earnout and sponsor shares), reconciled to the prospectus. Unit: million shares.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "split_factor",
+      "type": "number",
+      "description": "Cumulative split factor from listing to the 2 October 2026 close (shares held at the end date per share held at listing).",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "price_end_usd",
+      "type": "number",
+      "description": "Close on 2 October 2026 per share (per ADS for ADS issuers); for acquired companies, the consideration per share at completion; for companies delisted to over-the-counter markets, the OTC close. Unit: USD.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "price_end_note",
+      "type": "string",
+      "description": "How price_end_usd was set where it is not a close on the end date or a recorded takeout price (implied by the recorded company value)."
+    },
+    {
+      "name": "value_at_listing_usd_bn",
+      "type": "number",
+      "description": "shares_post_offering_m x offer_price_usd / ads_ratio, in billions. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "value_end_usd_bn",
+      "type": "number",
+      "description": "Long-term value created: shares_post_offering_m x split_factor x price_end_usd / ads_ratio, in billions, at the 2 October 2026 close. Unit: USD bn.",
+      "constraints": {
+        "minimum": 0
+      }
+    },
+    {
+      "name": "n_holding_lines",
+      "type": "integer",
+      "description": "Number of holder lines for the listing in holdings.csv.",
+      "constraints": {
+        "required": true,
+        "minimum": 0
+      }
+    },
+    {
+      "name": "valuation_date",
+      "type": "date",
+      "description": "Performance end date for every value in the row (2026-10-02).",
+      "format": "default",
+      "constraints": {
+        "required": true
+      }
+    }
+  ],
+  "primaryKey": [
+    "listing_id"
+  ],
+  "missingValues": [
+    ""
+  ]
+}
