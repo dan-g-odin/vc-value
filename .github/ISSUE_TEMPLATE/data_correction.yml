@@ -1,0 +1,58 @@
+name: Data correction
+description: Report a value that is wrong or out of date (a stake, a fund size, a primary share, a date).
+title: "[Correction] "
+labels: ["data correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the data. Corrections need a **public source** (an SEC filing, a fund announcement, a press report).
+        Values are measured at the fixed end date (the close on 2 October 2026), so later price moves are not corrections.
+  - type: dropdown
+    id: table
+    attributes:
+      label: Table
+      options: [holdings, fund_vehicles, fund_allocations, listings, firms, fund_generations, benchmark_prices, other]
+    validations:
+      required: true
+  - type: input
+    id: ids
+    attributes:
+      label: Record ID(s)
+      description: For example holding_id H0452, vehicle_id sequoia-capital--sequoia-capital-xii-l-p, or listing_id DDOG.
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: Field(s)
+      placeholder: stake_pct, primary_share, committed_usd_m ...
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Current value and proposed value
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links to the filings or documents, with the page, footnote or table where the figure appears.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Arithmetic or reasoning
+      description: How the proposed value follows from the source (share counts, denominators, dates).
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The source is publicly available and may be cited.
+          required: true
+        - label: I have looked for an existing issue about this record.
+          required: true
