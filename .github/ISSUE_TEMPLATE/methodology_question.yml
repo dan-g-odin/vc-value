@@ -1,0 +1,19 @@
+name: Methodology question or proposal
+description: Ask about, or propose a change to, how a measure is defined or computed.
+title: "[Method] "
+labels: ["methodology"]
+body:
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options: [Headline measure and consistency adjustment, Capital at risk and timing weights, Primary versus secondary shares, Fund-level attribution, Firm classification, Annualised measure and QQQ benchmark, Universe and coverage, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or proposal
+      description: If you propose a change, say what it would change in the data and why. Changes to the method are decided by the maintainers and released as a new minor or major version.
+    validations:
+      required: true
