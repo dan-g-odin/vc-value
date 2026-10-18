@@ -5,7 +5,7 @@ This is the maintainers' procedure for publishing the dataset on GitHub and arch
 ## One-time set-up
 
 1. **The repository** is https://github.com/dan-g-odin/vc-value (public). Its address is already filled in across the metadata files. If it moves, for example to an Odin organisation account, run `python scripts/set_release_metadata.py --repo-url <new address>` and commit the result.
-2. **Upload the files.** In the browser: open the repository, choose *Add file → Upload files* (or the *uploading an existing file* link on an empty repository), and drag in everything inside the release folder. Show hidden files first (on a Mac, Cmd + Shift + . in Finder) so that `.github`, `.zenodo.json`, `.gitattributes` and `.gitignore` are included. With git instead:
+2. **Upload the files.** In the browser: open the repository, choose *Add file → Upload files* (or the *uploading an existing file* link on an empty repository), and drag in everything inside the release folder. The browser uploader refuses files whose names start with a dot ("This file is hidden"), so create those one at a time with *Add file → Create new file* from the repository's front page, typing the full name (typing `/` makes a folder) and pasting the contents: `.zenodo.json` (needed before the first release) and the six files under `.github/` (the `validate` workflow, the four issue-template files and the pull-request template). `.gitattributes` and `.gitignore` matter only to people using git. With git instead, everything is included in one go:
    ```bash
    git init -b main
    git add .
@@ -13,8 +13,8 @@ This is the maintainers' procedure for publishing the dataset on GitHub and arch
    git remote add origin https://github.com/dan-g-odin/vc-value.git
    git push -u origin main
    ```
-3. **Repository settings:** add a description and topics (`venture-capital`, `open-data`, `private-equity`, `ipo`, `dataset`); enable Issues and Discussions; protect `main` and require a passing `validate` check and one review before merging.
-4. **Link Zenodo:** sign in to [zenodo.org](https://zenodo.org) with GitHub, open *Account → GitHub*, and switch the repository on. Zenodo will archive every published GitHub release and read its metadata from `.zenodo.json`.
+3. **Repository settings:** add a description and topics (`venture-capital`, `open-data`, `private-equity`, `ipo`, `dataset`); enable Issues and Discussions. Once there is more than one maintainer, protect `main` and require a passing `validate` check and one review before merging (with a single maintainer, a required review would block their own changes).
+4. **Link Zenodo:** sign in to [zenodo.org](https://zenodo.org) with GitHub, open *Account → GitHub*, press *Sync now* and switch the repository on. Do this before publishing the first release: Zenodo archives only releases published after the switch is on, and reads their metadata from `.zenodo.json`.
 
 ## Each release
 

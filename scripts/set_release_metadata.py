@@ -32,6 +32,13 @@ def main():
             if p.is_file() and p.suffix in ('.md', '.cff', '.json', '.yml', '.yaml') and rel.parts[0] not in ('data', 'schema', '.git'):
                 sub_file(str(rel), lambda t: t.replace(PLACEHOLDER, url).replace(current, url))
     cite_doi = a.concept_doi or a.doi
+    if a.doi:
+        ver = a.version or json.loads((ROOT / 'datapackage.json').read_text(encoding='utf-8')).get('version', '')
+        vtext = f' (version {ver}: [{a.doi}](https://doi.org/{a.doi}))'
+        sub_file('README.md', lambda t: re.sub(r'<!-- VERSION-DOI -->.*?<!-- /VERSION-DOI -->', f'<!-- VERSION-DOI -->{vtext}<!-- /VERSION-DOI -->', t, flags=re.S))
+    if a.concept_doi:
+        ctext = f' ([{a.concept_doi}](https://doi.org/{a.concept_doi}))'
+        sub_file('README.md', lambda t: re.sub(r'<!-- CONCEPT-DOI -->.*?<!-- /CONCEPT-DOI -->', f'<!-- CONCEPT-DOI -->{ctext}<!-- /CONCEPT-DOI -->', t, flags=re.S))
     if cite_doi:
         badge = f'[![DOI](https://zenodo.org/badge/DOI/{cite_doi}.svg)](https://doi.org/{cite_doi})'
         sub_file('README.md', lambda t: re.sub(r'<!-- DOI-BADGE -->.*?<!-- /DOI-BADGE -->', f'<!-- DOI-BADGE -->{badge}<!-- /DOI-BADGE -->', t, flags=re.S))

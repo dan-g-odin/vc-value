@@ -6,7 +6,7 @@ abstract: >-
   Stakes held by venture firms and other institutional investors in 424 US venture-backed listings (January 2014 to June 2026, excluding life sciences), the share of each stake bought from the company, the funds that held them, the fund histories of 180 venture firms, and rankings of firms and fund generations by value created per dollar of capital at risk, with ranges, robustness checks and an annualised comparison with the Nasdaq-100 (QQQ). All values are measured at a fixed performance end date, the close on 2 October 2026.
 version: 1.0.0
 date-released: 2026-10-18
-# doi: 10.5281/zenodo.0000000   (set by scripts/set_release_metadata.py after the first Zenodo release)
+doi: 10.5281/zenodo.23455286
 authors:
   - family-names: Gray
     given-names: Dan

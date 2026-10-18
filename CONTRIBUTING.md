@@ -11,7 +11,7 @@ Thank you for helping improve this dataset. Corrections, additions and questions
 
 ## How to propose a change
 
-1. **Open an issue** using the [data correction](.github/ISSUE_TEMPLATE/data_correction.yml), [missing entity](.github/ISSUE_TEMPLATE/missing_entity.yml) or [methodology question](.github/ISSUE_TEMPLATE/methodology_question.yml) template. Small, well-sourced corrections can go straight to a pull request.
+1. **Open an issue** using the [data correction](https://github.com/dan-g-odin/vc-value/issues/new?template=data_correction.yml), [missing entity](https://github.com/dan-g-odin/vc-value/issues/new?template=missing_entity.yml) or [methodology question](https://github.com/dan-g-odin/vc-value/issues/new?template=methodology_question.yml) form. Small, well-sourced corrections can go straight to a pull request.
 2. **Edit the core tables** (`data/core/*.csv`) in a branch. Keep identifiers stable: never renumber or rename existing `firm_id`, `generation_id`, `vehicle_id`, `holding_id` or `listing_id` values. New holder lines take the next free `holding_id`; new vehicles take `firm_id--slug-of-fund-name`.
 3. **Record the evidence** in the row's source and note fields (`provenance_source_url`, `provenance_note`, `source_url`, `note`).
 4. **Run the checks:**

@@ -4,6 +4,8 @@ All notable changes to the dataset are recorded here. Versions follow the policy
 
 ## [Unreleased]
 
+- **Documentation:** Zenodo DOI added to the README (badge and citation), CITATION.cff and datapackage.json (all versions: 10.5281/zenodo.23455286; version 1.0.0: 10.5281/zenodo.23455287). Issue links in the README and CONTRIBUTING.md open the issue forms; the README links to Discussions; one limitations bullet reworded; the release procedure covers browser uploads of hidden files and Zenodo set-up. No data changed.
+
 ## [1.0.0] - 2026-10-18
 
 First public release.

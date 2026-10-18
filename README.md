@@ -2,7 +2,7 @@
 
 **US venture-backed listings, January 2014 – June 2026 (excluding life sciences): who owned them, which funds held the stakes, and how much value each venture firm and fund created per dollar of capital at risk.**
 
-<!-- DOI-BADGE -->DOI: assigned on the first Zenodo release<!-- /DOI-BADGE --> · Licence: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) · Version 1.0.0 · Performance end date: 2 October 2026
+<!-- DOI-BADGE -->[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23455286.svg)](https://doi.org/10.5281/zenodo.23455286)<!-- /DOI-BADGE --> · Licence: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) · Version 1.0.0 · Performance end date: 2 October 2026
 
 This dataset records the stakes that venture firms and other institutional investors held going into 424 US venture-backed listings (IPOs, ADR offerings, direct listings and SPAC mergers, excluding life sciences), the share of each stake bought from the company itself, the funds that held it, and the fund histories of 180 venture firms (3,422 fund vehicles). From these it derives a ranking of 147 independent venture firms, and of 408 of their fund generations, by **value created per dollar of capital at risk**, with ranges, robustness checks and an annualised comparison with the Nasdaq-100 (QQQ). The headline figures can be recomputed from the core tables, and the validation script does so for every firm and fund.
 
@@ -145,7 +145,7 @@ Sutter Hill and Founders Fund are close: their ranges overlap, so the order of t
 
 ## Coverage and limitations
 
-- Only listings are counted: acquisitions of private companies and companies still private are not, so every firm's figure understates its total return. Listings outside the US and omitted listings below $2bn are outside the universe.
+- Only listings are counted: acquisitions of private companies and companies still private are not, so every firm's figure understates its total return. Listings outside the US are outside the universe, and listings worth under $2bn that the first search missed were not added.
 - Single outcomes matter: SpaceX alone is 37% of the universe's value, and several leading firms owe most of their value to one company.
 - Some inputs are estimates, carried as ranges: stakes below the 5% disclosure threshold, primary shares, low-confidence fund sizes, Sutter Hill's evergreen capital, DFJ's SpaceX stake and some splits between funds.
 - Holdings of natural persons (founders, executives and individual investors; 358 holder lines) are left out of the public release. They do not enter any figure.
@@ -157,9 +157,9 @@ See [docs/limitations.md](docs/limitations.md) for the full list and known data 
 
 If you use the dataset, please cite it:
 
-> Gray, D. (2026). *Venture value created per dollar at risk: US venture-backed listings, 2014-2026* (Version 1.0.0) [Data set]. Odin. <!-- CITATION-LINK -->https://github.com/dan-g-odin/vc-value<!-- /CITATION-LINK -->
+> Gray, D. (2026). *Venture value created per dollar at risk: US venture-backed listings, 2014-2026* (Version 1.0.0) [Data set]. Odin. <!-- CITATION-LINK -->https://doi.org/10.5281/zenodo.23455286<!-- /CITATION-LINK -->
 
-Citation metadata is in [`CITATION.cff`](CITATION.cff) (GitHub shows a "Cite this repository" button) and in [`.zenodo.json`](.zenodo.json). Each release is archived on Zenodo with a version DOI; the concept DOI always resolves to the latest version.
+Citation metadata is in [`CITATION.cff`](CITATION.cff) (GitHub shows a "Cite this repository" button) and in [`.zenodo.json`](.zenodo.json). Each release is archived on Zenodo with its own version DOI<!-- VERSION-DOI --> (version 1.0.0: [10.5281/zenodo.23455287](https://doi.org/10.5281/zenodo.23455287))<!-- /VERSION-DOI -->, and one concept DOI<!-- CONCEPT-DOI --> ([10.5281/zenodo.23455286](https://doi.org/10.5281/zenodo.23455286))<!-- /CONCEPT-DOI --> covers all versions and always resolves to the latest.
 
 ## Licence
 
@@ -167,8 +167,8 @@ The dataset and its documentation are released under the [Creative Commons Attri
 
 ## Contributing
 
-Corrections and additions are welcome, with a public source for every value. Open an issue first ([data correction](.github/ISSUE_TEMPLATE/data_correction.yml), [missing entity](.github/ISSUE_TEMPLATE/missing_entity.yml) or [methodology question](.github/ISSUE_TEMPLATE/methodology_question.yml)), or send a pull request that passes `python scripts/validate.py`. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).
+Corrections and additions are welcome, with a public source for every value. Open an issue first ([data correction](https://github.com/dan-g-odin/vc-value/issues/new?template=data_correction.yml), [missing entity](https://github.com/dan-g-odin/vc-value/issues/new?template=missing_entity.yml) or [methodology question](https://github.com/dan-g-odin/vc-value/issues/new?template=methodology_question.yml)), or send a pull request that passes `python scripts/validate.py`. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Maintainer
 
-Dan Gray, Research Lead, Odin. Please use GitHub issues or discussions for questions about the data.
+Dan Gray, Research Lead, Odin. Questions about the data are welcome in [Discussions](https://github.com/dan-g-odin/vc-value/discussions); corrections go in [issues](https://github.com/dan-g-odin/vc-value/issues/new/choose).
