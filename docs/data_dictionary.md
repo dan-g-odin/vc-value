@@ -119,7 +119,7 @@ Observations taken from filings and other sources: listings, holders, fund histo
 
 **Holdings (holder lines).** One row per holder line: the stake an institutional holder held going into a listing, as a share of post-offering shares, with its value at the end date, the share bought from the company (primary) and provenance. Holdings of natural persons are not included.
 
-- File: [`data/core/holdings.csv`](../data/core/holdings.csv) (1,955 rows)
+- File: [`data/core/holdings.csv`](../data/core/holdings.csv) (1,956 rows)
 - Primary key: `holding_id`
 - Foreign key: `listing_id` → `listings.listing_id`
 - Foreign key: `firm_id` → `firms.firm_id`
@@ -162,7 +162,7 @@ Observations taken from filings and other sources: listings, holders, fund histo
 
 **Fund allocations.** How each ranked or measured firm's stake in a listing is split between its fund generations, with the primary fraction of each part and the evidence. Value held by vehicles outside any fund generation carries vehicle_outside_fund_files instead of generation_id.
 
-- File: [`data/core/fund_allocations.csv`](../data/core/fund_allocations.csv) (1,142 rows)
+- File: [`data/core/fund_allocations.csv`](../data/core/fund_allocations.csv) (1,145 rows)
 - Primary key: `allocation_id`
 - Foreign key: `firm_id` → `firms.firm_id`
 - Foreign key: `listing_id` → `listings.listing_id`
@@ -329,7 +329,7 @@ Figures computed from the core tables: firm and fund metrics, robustness checks,
 
 **Stage weights by holding (companion ranking).** Entry-stage weights and stage-weighted values of each holder line, used only by the companion stage-weighted ranking.
 
-- File: [`data/derived/holding_stage_weights.csv`](../data/derived/holding_stage_weights.csv) (1,955 rows)
+- File: [`data/derived/holding_stage_weights.csv`](../data/derived/holding_stage_weights.csv) (1,956 rows)
 - Primary key: `holding_id`
 - Foreign key: `holding_id` → `holdings.holding_id`
 

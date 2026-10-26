@@ -364,7 +364,7 @@ incj,INCJ,sovereign,not_measured_holder_type,,,false,false,1,
 incubate,Incubate,core_venture,not_scored_no_fund_history,,"no fund history: screened against the top-50 line on known fund sizes, or fund sizes not found (report §10.8)",false,true,1,
 index-ventures,Index Ventures,core_venture,ranked,,,true,true,24,"v7: Pure Storage 3.69% (Form 3), Dropbox 1.56%, Slack 1.24%, ServiceTitan 2.23% (87% primary) and Zendesk 1.11% added; v8: Datadog 7.5% and Figma 5.5% bought from holders (Growth III/IV/V and Yucca) removed; parallel funds sized from holdings"
 industry-ventures,Industry Ventures,core_venture,not_scored_no_fund_history,,"no fund history: screened against the top-50 line on known fund sizes, or fund sizes not found (report §10.8)",false,true,1,
-initialized-capital,Initialized Capital,core_venture,ranked,,,true,true,5,
+initialized-capital,Initialized Capital,core_venture,ranked,,,true,true,6,
 innovation-endeavors,Innovation Endeavors,core_venture,not_scored_no_fund_history,,"no fund history: screened against the top-50 line on known fund sizes, or fund sizes not found (report §10.8)",false,true,2,
 innovation-works,Innovation Works,core_venture,not_scored_no_fund_history,,"no fund history: screened against the top-50 line on known fund sizes, or fund sizes not found (report §10.8)",false,true,1,
 innovius-capital-sirius,Innovius Capital Sirius,growth_crossover,not_measured_holder_type,,,false,false,1,
