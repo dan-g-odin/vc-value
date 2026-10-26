@@ -16,14 +16,14 @@ This dataset records the stakes that venture firms and other institutional inves
 | [`data/core/firms.csv`](data/core/firms.csv) | 792 | investment firms and other institutional holders, and whether each is ranked |
 | [`data/core/fund_generations.csv`](data/core/fund_generations.csv) | 1,789 | fund generations (a main fund with its side vehicles): the unit of the fund ranking |
 | [`data/core/fund_vehicles.csv`](data/core/fund_vehicles.csv) | 3,422 | fund histories: every vehicle with vintage, size, strategy, scope and capital at risk |
-| [`data/core/holdings.csv`](data/core/holdings.csv) | 1,955 | holder lines: each stake going into a listing, its value, primary share and provenance |
-| [`data/core/fund_allocations.csv`](data/core/fund_allocations.csv) | 1,142 | how each firm's stake in a listing splits between its funds, with the evidence |
+| [`data/core/holdings.csv`](data/core/holdings.csv) | 1,956 | holder lines: each stake going into a listing, its value, primary share and provenance |
+| [`data/core/fund_allocations.csv`](data/core/fund_allocations.csv) | 1,145 | how each firm's stake in a listing splits between its funds, with the evidence |
 | [`data/core/benchmark_prices.csv`](data/core/benchmark_prices.csv) | 162 | Nasdaq-100 and QQQ prices used for the annualised comparison |
 | [`data/derived/firm_metrics.csv`](data/derived/firm_metrics.csv) | 180 | firm ranking: value per dollar, the headline, ranges, ranks and annualised measures |
 | [`data/derived/firm_robustness.csv`](data/derived/firm_robustness.csv) | 3,087 | each ranked firm under 19 alternative specifications and the ex-SpaceX view |
 | [`data/derived/fund_metrics.csv`](data/derived/fund_metrics.csv) | 453 | fund ranking: value per dollar and the headline for each fund generation |
 | [`data/derived/listing_venture_summary.csv`](data/derived/listing_venture_summary.csv) | 418 | long-term value created by each listing and venture funds' share of it |
-| [`data/derived/holding_stage_weights.csv`](data/derived/holding_stage_weights.csv) | 1,955 | entry-stage weights by holding (companion ranking only) |
+| [`data/derived/holding_stage_weights.csv`](data/derived/holding_stage_weights.csv) | 1,956 | entry-stage weights by holding (companion ranking only) |
 | [`data/derived/stage_weighted_rankings.csv`](data/derived/stage_weighted_rankings.csv) | 1,327 | companion ranking of total value weighted by entry stage |
 | [`data/reference/timing_weights.csv`](data/reference/timing_weights.csv) | 268 | weights that turn commitments into capital at risk, by vintage and strategy |
 | [`data/reference/lag_distributions.csv`](data/reference/lag_distributions.csv) | 104 | entry-to-listing lag distributions behind the timing weights |

@@ -27,3 +27,4 @@
 5. **Values outside any fund generation.** About $28bn of the ranked firms' value sits in single-company vehicles and other vehicles outside the fund files (`fund_allocations.vehicle_outside_fund_files`); it counts at firm level but in no fund's figure.
 6. **Sector** is blank for the two listings in item 1; `entry_year` and `first_round` are missing for some holder lines.
 7. **Some free-text fields keep internal version codes** (for example "v14 G1", "v15 U2") that mark the book version in which a value was changed.
+8. **Initialized Capital's Coinbase shares are credited to the wrong fund.** Version 1.0.0 gives all of them to Initialized II; the seed shares, about 82% of the stake, belong to Initialized Capital Special Opportunities Fund I, the firm's debut fund, and Instacart belongs to it too. Corrected in the next minor version (see the [changelog](../CHANGELOG.md)): that fund ranks 8th of 408 instead of 118th. Firm figures are unaffected.

@@ -639,11 +639,11 @@ A00637,index-ventures,WORK,index-ventures--index-growth-ii,,1.0,1.0,0.30565428,0
 A00638,index-ventures,ZEN,index-ventures--index-growth-ii,,0.987,1.0,0.05954231,0.05954231,rule,vintage_rule,LOW,filing_research
 A00639,index-ventures,ZEN,index-ventures--yucca-co-invest,,0.013,1.0,0.00078425,0.00078425,rule,vintage_rule,LOW,filing_research
 A00640,index-ventures,ZUO,index-ventures--index-growth-ii,,1.0,0.0,0.0,0.04307798,name,holder_name,MED,rule
-A00641,initialized-capital,CART,initialized-capital--initialized-iii,,1.0,1.0,0.02537448,0.02537448,rule-noentry,vintage_rule,LOW,rule
-A00642,initialized-capital,COIN,initialized-capital--initialized-ii,,1.0,1.0,0.3818478,0.3818478,name,holder_name,MED,rule
+A00641,initialized-capital,CART,initialized-capital--initialized-i,,1.0,1.0,0.02537448,0.02537448,press,adviser_values_or_press,LOW,manual
+A00642,initialized-capital,COIN,initialized-capital--initialized-ii,,0.0875,1.0,0.033412,0.033412,ira-order,other,LOW,manual
 A00643,initialized-capital,OPEN,initialized-capital--initialized-ii,,1.0,1.0,0.00253519,0.00253519,rule-noentry,vintage_rule,LOW,rule
 A00644,initialized-capital,RDDT,initialized-capital--initialized-i,,1.0,1.0,0.04701652,0.04701652,name,holder_name,MED,rule
-A00645,initialized-capital,WEAV,initialized-capital--initialized-ii,,1.0,1.0,0.00710173,0.00710173,rule-noentry,vintage_rule,LOW,rule
+A00645,initialized-capital,WEAV,initialized-capital--initialized-ii,,1.0,1.0,0.00710173,0.00710173,name,holder_name,MED,manual
 A00646,jvp,CYBR,jvp--jvp-iv,,0.6642,1.0,3.03671607,3.03671607,13g,per_fund_share_counts,HIGH,filing_research
 A00647,jvp,CYBR,jvp--jvp-vi-opportunity,,0.3358,0.499702,0.76718,1.5352744,13g,per_fund_share_counts,HIGH,filing_research
 A00648,k5-global,SPCX,k5-global--k5-pooled-funds,,1.0,0.25256,1.55057805,6.13945094,name,holder_name,MED,rule
@@ -1141,3 +1141,6 @@ A01139,y-combinator,PD,y-combinator--yc-standard-deal-pre-2018-vehicles,,1.0,1.0
 A01140,y-combinator,WEAV,y-combinator--yc-standard-deal-pre-2018-vehicles,,1.0,1.0,0.01420346,0.01420346,rule-stale,vintage_rule,LOW,rule
 A01141,yorktown-partners,SOI,yorktown-partners--yep-x,,1.0,1.0,1.12557141,1.12557141,name,holder_name,MED,rule
 A01142,zeev-ventures,NAVN,zeev-ventures--zeev-vi,,1.0,0.9449,0.75892276,0.80317786,rule-noentry,vintage_rule,LOW,rule
+A01143,initialized-capital,COIN,initialized-capital--initialized-i,,0.825,1.0,0.315024,0.315024,ira-order+press,adviser_values_or_press,MED,manual
+A01144,initialized-capital,COIN,initialized-capital--initialized-iii,,0.0875,1.0,0.033412,0.033412,ira-order,other,LOW,manual
+A01145,initialized-capital,BLND,initialized-capital--initialized-ii,,1.0,0.0,0.0,0.0,ira,holder_name,HIGH,manual
