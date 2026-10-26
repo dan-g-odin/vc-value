@@ -26,8 +26,8 @@
     "direct alpha",
     "open data"
   ],
-  "version": "1.0.0",
-  "publication_date": "2026-10-18",
+  "version": "1.1.0",
+  "publication_date": "2026-10-26",
   "language": "eng",
   "related_identifiers": [
     {
@@ -36,5 +36,5 @@
       "resource_type": "dataset"
     }
   ],
-  "notes": "Performance end date: the close on 2 October 2026. Holdings of natural persons are not included."
+  "notes": "Performance end date: the close on 2 October 2026. Holdings of natural persons are not included. v1.1.0 corrects the fund-level attribution of Initialized Capital's stakes in Coinbase, Instacart, Weave and Blend."
 }
