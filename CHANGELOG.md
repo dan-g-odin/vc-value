@@ -2,7 +2,7 @@
 
 All notable changes to the dataset are recorded here. Versions follow the policy in [CONTRIBUTING.md](CONTRIBUTING.md#versioning).
 
-## [Unreleased]
+## [1.1.0] - 2026-10-26
 
 - **Data correction, Initialized Capital fund split (changes values and ranks, so the next release is a minor version).** In 1.0.0 the holder-name rule credited all of Initialized's Coinbase shares to Initialized II, L.P. The Coinbase investors' rights agreement (S-1/A Ex4.2, 15 March 2021) names three Initialized vehicles: Initialized Capital Special Opportunities Fund I, L.P. among the earliest investors, and Initialized II, L.P. and Initialized Annex L.P. next to the 2018 Series E investors. The book's note abbreviated the first as "SOF I", so the rule matched only "Initialized II".
   - **Special Opportunities Fund I is Initialized's debut fund** (generation `initialized-capital--initialized-i`): the only 2012-era Initialized entity on EDGAR (Form D 0001542689-12-000001), and listed in Initialized Capital Management's Form ADV of 27 March 2026. Its display name in `fund_metrics.csv` is now the full legal name.
